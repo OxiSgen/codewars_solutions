@@ -30,3 +30,20 @@ class Solution:
         # newList    =   ListNode{val: 0, next: ListNode{val: 7, next: ListNode{val: 0, next: ListNode{val: 8, next: None}}}}.
         # первый элемент служебный, по этому возвращяем .next
         return newList.next
+    
+     """
+     Вариант 2 из решений других людей. Вместо того, чтобы отдельно создавать числа и генерировать новый список, делаем всё сразу. Идея как при сложении в столбик.
+     """
+     def addTwoNumbers(self, l1, l2):
+            carry = 0;
+            res = n = ListNode(0);
+            while l1 or l2 or carry:
+                if l1:
+                    carry += l1.val
+                    l1 = l1.next;
+                if l2:
+                    carry += l2.val; # carry - сумма двух цифр из одного разряда первого и второго числа.
+                    l2 = l2.next;
+                carry, val = divmod(carry, 10) # carry - целая часть от деления, которую мы переносим в слеющий разряд. val - то, что мы оставляем в данном разряде.
+                n.next = n = ListNode(val);
+            return res.next;
