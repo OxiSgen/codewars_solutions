@@ -97,6 +97,9 @@ class MagicSoluthions:
 
     @staticmethod
     def generateParenthesis2(n):
+        """
+        Прикольный пример использования рекурсивных генераторов, но совершает много лишних шагов, из-за чего медленней прочих.
+        """
         def generate(p, left, right):
             if right >= left >= 0:
                 if not right: yield p
